@@ -1,0 +1,81 @@
+﻿@using System.Security.Claims
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EasyEats </title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        .ContainerNav{
+            align-items:center;
+             background: #AF3333;
+
+        }
+
+        .UlNav{
+            flex-direction:row;
+            width:100%;
+            justify-content:space-around;
+        }
+
+        .footer{
+            background: #AF3333;
+            height:10vh;
+            display:flex;
+            justify-content:center;
+            align-items:center
+        }
+        .body{
+            display:flex;
+            height:100vh;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .BtnNav{
+            color:white 
+        }
+        .p{
+            margin:0 !important 
+        }
+        .options{
+            height:100%
+        }
+    </style>
+</head>
+
+<body class="body">
+    <nav class="navbar ContainerNav">
+        <ul class="navbar-nav UlNav">
+            <li class="navbar-brand LiNav">
+                <a class="BtnNav" asp-area="" asp-controller="Home" asp-action="Index">Início</a>
+            </li>
+            <li class="navbar-brand LiNav">
+                <a class="BtnNav" asp-area="" asp-controller="Cliente" asp-action="CardapioLanches">Cardápio</a>
+            </li>
+            <li class="navbar-brand LiNav">
+                <a class="BtnNav" asp-area="" asp-controller="ItemPedidos" asp-action="Index">Pedido</a>
+            </li>
+        </ul>
+        
+    </nav>
+    
+    <div class="options">
+        <main class="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p class="p">©Todos os direitos reservados</p>
+    </footer>
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+

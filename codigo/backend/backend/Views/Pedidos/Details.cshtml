@@ -1,0 +1,62 @@
+﻿@model backend.Models.Pedido
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Detalhes do Pedido</h2>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Data):
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Status):
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Status.Descricao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Mesa):
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Mesa.Id)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <h4>Itens do Pedido</h4>
+    <hr />
+    <table class="table"
+        <thread>
+            <tr>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Preço Unitário</th>
+                <th>Total</th>
+            </tr>
+        </thread>
+        <tbody>
+            @foreach (var item in Model.ItemPedidos)
+            {
+                    <tr>
+                        <td>@item.Produto.Nome</td>
+                        <td>@item.Quantidade</td>
+                        <td>R$ @item.Produto.Valor</td>
+                        <td>R$ @(item.Quantidade * item.Produto.Valor)</td>
+                    </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <a class="btn btn-primary" asp-action="Index">Voltar</a> |
+    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model?.Id">Editar</a>
+</div>
